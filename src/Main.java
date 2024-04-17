@@ -4,16 +4,21 @@ import com.github.houbb.pinyin.util.PinyinHelper;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.EventListener;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Random;
 
 public class Main extends ListenerAdapter {
+    private static final String channelId = "1230055590320017418";
     private static String token;
     private static JDA jda;
     private static final String[] bopomofo = {
@@ -44,13 +49,13 @@ public class Main extends ListenerAdapter {
             {"ing", "in"},
             {"ang"},
             {"jun","qun","xun","yun", "vn"},
-            {"an"},
             {"ian", "van", "juan", "quan", "xuan", "yuan"},
+            {"an"},
             {"ie"},
             {"ai"},
-            {"ei"},
+            {"ei", "ui"},
             {"ao"},
-            {"ou"},
+            {"ou", "iu"},
             {"ju","qu","xu","yu", "v"},
             {"a"},
             {"i"},
@@ -83,10 +88,22 @@ public class Main extends ListenerAdapter {
     }
 
     @Override
+    public void onReady(ReadyEvent event) {
+        TextChannel channel = jda.getChannelById(TextChannel.class, lastRhyme);
+        if (channel == null) {
+            System.out.println("no rhyming channel");
+            return;
+        }
+        Message message = channel.getHistory().retrievePast(1).complete().get(0);
+        lastRhyme = getRhymeId(message.getContentRaw());
+        message.reply("從此開始押 " + bopomofo[lastRhyme] + " 韻 >:)").queue();
+    }
+
+    @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.getAuthor().isBot()) return;
         System.out.println(event.getAuthor().getGlobalName() + " > " + event.getMessage().getContentRaw());
-        if (!event.getChannel().getId().equals("1230055590320017418")) return;
+        if (!event.getChannel().getId().equals(channelId)) return;
         int rhyme = getRhymeId(event.getMessage().getContentRaw());
         System.out.println("你用ㄌ " + rhyme + "押韻");
         if (rhyme == -1) return;
@@ -99,7 +116,6 @@ public class Main extends ListenerAdapter {
             event.getMessage().reply("接下來請用 " + bopomofo[r] + " 當作韻腳來押韻").queue();
             lastRhyme = r;
         }
-        lastRhyme = rhyme;
     }
 
     private static int getRhymeId(String sentence) {
