@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71c5eb00-f22e-48d4-a895-5aeff748bdad" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/github_houbb_pinyin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/net_dv8tion_JDA.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="71c5eb00-f22e-48d4-a895-5aeff748bdad" name="Changes" comment="Add pinyin test class">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/RhymeSann_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RhymeSann.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RhymeSann.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zhuyintranslatorByIpig" beforeDir="false" />
     </list>
-    <list id="8eb903eb-20af-44cc-ba15-8562f2ab48d1" name="Changes by Redth" comment="" />
+    <list id="8eb903eb-20af-44cc-ba15-8562f2ab48d1" name="Changes by Redth" comment="Changes by Redth">
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +23,25 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Main.java">
+      <ranges>
+        <range start1="6" end1="6" start2="6" end2="8" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="9" end1="9" start2="11" end2="12" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="14" end1="14" start2="17" end2="18" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="16" end1="16" start2="20" end2="21" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="18" end1="18" start2="23" end2="44" changelist="71c5eb00-f22e-48d4-a895-5aeff748bdad" />
+        <range start1="25" end1="25" start2="51" end2="52" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="26" end1="27" start2="53" end2="53" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="29" end1="30" start2="55" end2="56" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="31" end1="32" start2="57" end2="58" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="64" end1="64" start2="90" end2="102" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="67" end1="68" start2="105" end2="106" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+        <range start1="75" end1="76" start2="113" end2="117" changelist="71c5eb00-f22e-48d4-a895-5aeff748bdad" />
+        <range start1="77" end1="78" start2="118" end2="118" changelist="8eb903eb-20af-44cc-ba15-8562f2ab48d1" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -47,7 +63,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "last_opened_file_path": "E:/RTXs Lab/git/RhymeSann",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
@@ -90,11 +106,28 @@
       <option name="project" value="LOCAL" />
       <updated>1701965459415</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="@RedthMC too sick omg 😱😱😱">
+      <created>1713371880620</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713371880620</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add pinyin test class">
+      <created>1713373728535</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713373728535</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="@RedthMC too sick omg " />
+    <MESSAGE value="Read history messages" />
+    <MESSAGE value="Add pinyin test class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add pinyin test class" />
   </component>
 </project>

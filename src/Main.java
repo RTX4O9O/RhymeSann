@@ -16,6 +16,27 @@ import java.nio.file.Path;
 public class Main extends ListenerAdapter {
     private static String token;
     private static JDA jda;
+    private static final String[] bopomofo = {
+            "ㄓㄔㄕㄖㄗㄘㄙ",
+            "ㄨㄥ ㄥ ㄩㄥ",
+            "ㄣ",
+            "ㄧㄥ ㄧㄣ",
+            "ㄤ",
+            "ㄩㄣ",
+            "ㄧㄢ ㄩㄢ",
+            "ㄢ (不包含ㄧㄢ ㄩㄢ)",
+            "ㄝ",
+            "ㄞ",
+            "ㄟ",
+            "ㄠ",
+            "ㄡ",
+            "ㄩ",
+            "ㄚ",
+            "ㄧ",
+            "ㄨ",
+            "ㄜ ㄦ",
+            "ㄛ"
+    };
     private static final String[][] rhymes = {
             {"zhi", "chi", "shi", "ri", "zi", "ci", "si"},
             {"ong", "eng"},
@@ -73,7 +94,10 @@ public class Main extends ListenerAdapter {
             event.getMessage().addReaction(Emoji.fromUnicode("✅")).queue();
         } else {
             event.getMessage().addReaction(Emoji.fromUnicode("❌")).queue();
-            event.getMessage().reply("從此開始押韻 >:)").queue();
+            event.getMessage().reply("押運斷ㄌ...").queue();
+            int r = new Random().nextInt(18);
+            event.getMessage().reply("接下來請用 " + bopomofo[r] + " 當作韻腳來押韻").queue();
+            lastRhyme = r;
         }
         lastRhyme = rhyme;
     }
