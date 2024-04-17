@@ -1,5 +1,92 @@
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+import com.github.houbb.pinyin.constant.enums.PinyinStyleEnum;
+import com.github.houbb.pinyin.util.PinyinHelper;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.emoji.Emoji;
+import net.dv8tion.jda.api.events.GenericEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.EventListener;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class Main extends ListenerAdapter {
+    private static String token;
+    private static JDA jda;
+    private static final String[][] rhymes = {
+            {"zhi", "chi", "shi", "ri", "zi", "ci", "si"},
+            {"ong", "eng"},
+            {"en"},
+            {"ing", "in"},
+            {"ang"},
+            {"jun","qun","xun","yun", "vn"},
+            {"an"},
+            {"ian", "van", "juan", "quan", "xuan", "yuan"},
+            {"ie"},
+            {"ai"},
+            {"ei"},
+            {"ao"},
+            {"ou"},
+            {"ju","qu","xu","yu", "v"},
+            {"a"},
+            {"i"},
+            {"u"},
+            {"e", "er"},
+            {"o"},
+    };
+
+    private static int lastRhyme = -1;
+
+    public static void main(String[] args)  {
+        try {
+            token = Files.readString(Path.of("token"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        jda = JDABuilder.createDefault(token)
+            .setActivity(Activity.watching("你押韻"))
+            .enableIntents(GatewayIntent.GUILD_PRESENCES, GatewayIntent.MESSAGE_CONTENT)
+            .addEventListeners(new Main())
+            .build();
+    }
+
+    public static boolean isRhyming(String sentenceA, String sentenceB) {
+        int rhymeA = getRhymeId(sentenceA);
+        int rhymeB = getRhymeId(sentenceB);
+        if (rhymeA == -1) return false;
+        return rhymeA == rhymeB;
+    }
+
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event) {
+        if (event.getAuthor().isBot()) return;
+        System.out.println(event.getAuthor().getGlobalName() + " > " + event.getMessage().getContentRaw());
+        if (!event.getChannel().getId().equals("1230055590320017418")) return;
+        int rhyme = getRhymeId(event.getMessage().getContentRaw());
+        System.out.println("你用ㄌ " + rhyme + "押韻");
+        if (rhyme == -1) return;
+        if (lastRhyme == rhyme) {
+            event.getMessage().addReaction(Emoji.fromUnicode("✅")).queue();
+        } else {
+            event.getMessage().addReaction(Emoji.fromUnicode("❌")).queue();
+            event.getMessage().reply("從此開始押韻 >:)").queue();
+        }
+        lastRhyme = rhyme;
+    }
+
+    private static int getRhymeId(String sentence) {
+        String pinyin = PinyinHelper.toPinyin(sentence, PinyinStyleEnum.INPUT);
+        int i = 0;
+        for (String[] rhyme : rhymes) {
+            for (String vowel : rhyme) {
+                if (pinyin.endsWith(vowel)) return i;
+            }
+            i++;
+        }
+        return -1;
     }
 }
